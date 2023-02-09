@@ -9,6 +9,7 @@ view: orders {
   }
 
   dimension_group: created {
+    label: "{% if _filters['created_date'] == ''%}'default'{% else %}'Revenue'{{_filters['created_date']}}{% endif %}"
     type: time
     timeframes: [
       raw,
