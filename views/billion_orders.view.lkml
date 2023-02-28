@@ -21,4 +21,5 @@ view: billion_orders {
     type: count
     drill_fields: [orders.id]
   }
+
 }

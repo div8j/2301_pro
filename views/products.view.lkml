@@ -9,6 +9,7 @@ view: products {
   }
 
   dimension: brand {
+    description: "https://www.adidas.co.in/football?grid=true&cm_mmc=AdieSEM_Google-_-{CampaignName}-_-{AdgroupName}-_-adidas&cm_mmca1=IN&cm_mmca2=e&gclid=Cj0KCQiA6fafBhC1ARIsAIJjL8koW_KpV-SlsmEb3AFlAladHaIu8T-QGYr73icqRhusBQb00yhYcBQaAoVREALw_wcB"
     type: string
     sql: ${TABLE}.brand ;;
   }
@@ -47,4 +48,5 @@ view: products {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+
 }
