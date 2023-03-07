@@ -9,9 +9,12 @@ view: orders {
 
   }
 
-
+dimension: month_name {
+  type: string
+  html: @{standard_date_format} ;;
+  sql: ${created_date} ;;
+  }
   dimension_group: created {
-    label: "{% if _filters['created_date'] == ''%}'default'{% else %}'Revenue'{{_filters['created_date']}}{% endif %}"
     type: time
     timeframes: [
       raw,
@@ -40,6 +43,12 @@ view: orders {
     type: count
     drill_fields: [detail*]
   }
+  measure: count_2 {
+    type: yesno
+    sql: ${count} != 0 ;;
+  }
+
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

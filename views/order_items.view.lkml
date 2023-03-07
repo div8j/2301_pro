@@ -20,6 +20,7 @@ view: order_items {
     sql: ${TABLE}.order_id ;;
   }
 
+
   dimension: phone {
     type: string
     sql: ${TABLE}.phone ;;

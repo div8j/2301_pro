@@ -43,3 +43,12 @@ view: events {
     drill_fields: [id, users.id, users.first_name, users.last_name]
   }
 }
+test: raj {
+  explore_source: employees {
+    column: manager {}
+    column: emp_id {}
+  }
+  assert: emp_id_not_null {
+    expression: NOT is_null(${employees.emp_id}) ;;
+  }
+}
