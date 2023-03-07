@@ -6,7 +6,9 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+
   }
+
 
   dimension_group: created {
     label: "{% if _filters['created_date'] == ''%}'default'{% else %}'Revenue'{{_filters['created_date']}}{% endif %}"
@@ -21,7 +23,7 @@ view: orders {
       year
     ]
     sql: ${TABLE}.created_at ;;
-  }
+}
 
   dimension: status {
     type: string
