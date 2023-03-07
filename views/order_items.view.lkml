@@ -49,10 +49,15 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+  measure: total {
+    type: average
+    sql: -${sale_price} ;;
+  }
+
   measure: sum {
-    type: sum
-    sql: CASE WHEN (${sale_price} > 20) THEN ${sale_price}
-    WHEN (${sale_price} < 20) THEN -${sale_price}
+    type: number
+    sql: CASE WHEN (${sale_price} > 200) THEN ${sale_price}
+    WHEN (${sale_price} < 200) THEN -${sale_price}
     ELSE ${sale_price}
     END;;
   }
