@@ -48,5 +48,15 @@ view: products {
     type: count
     drill_fields: [id, item_name, inventory_items.count]
   }
+  measure: countwithlink {
+    type: number
+    value_format_name: gbp
+    sql: ${count};;
+    link: {
+      label: "Drilldown"
+      url: "https://gcps230.cloud.looker.com/dashboards/20"
+    }
+  }
+
 
 }

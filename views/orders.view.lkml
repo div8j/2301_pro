@@ -41,6 +41,7 @@ view: orders {
     drill_fields: [detail*]
   }
 
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
@@ -58,3 +59,14 @@ view: orders {
     ]
   }
 }
+test: order_id_is_unique {
+  explore_source: orders {
+    column: id {}
+    column: count {}
+    sorts: [orders.count: desc]
+    limit: 1
+  }
+  assert: order_id_is_unique {
+    expression: ${orders.count} = 1 ;;
+  }
+  }
