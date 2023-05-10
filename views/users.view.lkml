@@ -68,6 +68,11 @@ view: users {
     type: zipcode
     sql: ${TABLE}.zip ;;
   }
+  #dimension: test {
+    #type: number
+    #hidden: yes
+    #sql: null ;;
+  #}
 
   measure: count {
     type: count
@@ -86,5 +91,4 @@ view: users {
       sindhu.count,
       user_data.count
     ]
-  }
-}
+  }}

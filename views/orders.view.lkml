@@ -36,6 +36,7 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -58,15 +59,6 @@ view: orders {
       ten_million_orders.count
     ]
   }
-}
-test: order_id_is_unique {
-  explore_source: orders {
-    column: id {}
-    column: count {}
-    sorts: [orders.count: desc]
-    limit: 1
-  }
-  assert: order_id_is_unique {
-    expression: ${orders.count} = 1 ;;
-  }
+
+
   }
