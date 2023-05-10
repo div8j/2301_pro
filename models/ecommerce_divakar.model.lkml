@@ -5,12 +5,13 @@ include: "/views/**/*.view"
 include: "/Merged_lookml_test.dashboard.lookml"
 include: "/Dashboard_Testing.dashboard.lookml"
 
-datagroup: ecommerce_divakar_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "1 hour"
+datagroup: daily
+{
+  sql_trigger: SELECT CURRENT_DATE() ;;
+  max_cache_age: "1 hours"
 }
 
-persist_with: ecommerce_divakar_default_datagroup
+persist_with: daily
 
 explore: imgsrc1onerroralert2 {}
 
