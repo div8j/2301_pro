@@ -48,9 +48,28 @@ view: order_items {
     type: number
     sql: ${TABLE}.sale_price ;;
   }
-
+  measure: end_of_period_headcount {
+    hidden: yes
+    type: count_distinct
+    sql:  ${id};;
+    drill_fields: [headcount_drilldown*]
+  }
+  measure: count_hired_new {
+    type: count_distinct
+    sql: ${id};;
+    filters: [sale_price: ">=18 AND <=20"]
+    drill_fields: [headcount_drilldown*]
+  }
+  measure: active_headcount {
+    type: number
+    sql: ${end_of_period_headcount} - ${count_hired_new};;
+    drill_fields: [headcount_drilldown*]
+  }
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+  }
+  set:  headcount_drilldown{
+    fields: [id, orders.id, inventory_items.id]
   }
 }

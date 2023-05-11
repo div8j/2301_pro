@@ -24,6 +24,12 @@ view: users {
     sql: ${TABLE}.country ;;
   }
 
+  dimension: store_location {
+    type: location
+    sql_latitude: 44.500000  ;;
+    sql_longitude: -107.290283 ;;
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
