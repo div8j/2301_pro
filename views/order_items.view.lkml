@@ -53,6 +53,22 @@ view: order_items {
     type: average
     sql: -${sale_price} ;;
   }
+  dimension: eurovalue {
+    type: number
+    sql: ${TABLE}.sale_price ;;
+    value_format_name: eur
+  }
+  measure: testinguser{
+    type: sum
+    sql: {% if _user_attributes['currency'] == 'EURO' %}
+    ${eurovalue}
+    {% else %}
+    ${TABLE}.sale_price
+    {% endif %};;
+    value_format_name: decimal_2
+    html: @{currency_html}}{{rendered_value}} ;;
+
+  }
 
   measure: sum {
     type: number
